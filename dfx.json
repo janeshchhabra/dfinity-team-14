@@ -1,0 +1,35 @@
+{
+  "canisters": {
+    "rust_images": {
+      "main": "src/rust_images/main.mo",
+      "type": "motoko"
+    },
+    "rust_images_assets": {
+      "dependencies": [
+        "rust_images"
+      ],
+      "frontend": {
+        "entrypoint": "src/rust_images_assets/src/index.html"
+      },
+      "source": [
+        "src/rust_images_assets/assets",
+        "dist/rust_images_assets/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "dfx": "0.8.1",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}
