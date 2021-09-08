@@ -1,0 +1,12 @@
+type ChunkId = nat;
+type Key = text;
+
+service : {
+    "get_chunk": (record {
+        key: Key;
+        index: nat;
+    }) -> (record { content: blob }) query;
+
+    "create_chunk": (record { key: Key; content: blob }) -> (record { chunk_id: ChunkId });
+}
+

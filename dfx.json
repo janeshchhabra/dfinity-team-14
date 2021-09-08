@@ -1,21 +1,10 @@
 {
   "canisters": {
     "rust_images": {
-      "main": "src/rust_images/main.mo",
-      "type": "motoko"
-    },
-    "rust_images_assets": {
-      "dependencies": [
-        "rust_images"
-      ],
-      "frontend": {
-        "entrypoint": "src/rust_images_assets/src/index.html"
-      },
-      "source": [
-        "src/rust_images_assets/assets",
-        "dist/rust_images_assets/"
-      ],
-      "type": "assets"
+      "build": "cargo build --target wasm32-unknown-unknown --package rust_images --release",
+      "candid": "src/rust_images/src/rust_images.did",
+      "wasm": "target/wasm32-unknown-unknown/release/rust_images.wasm",
+      "type": "custom"
     }
   },
   "defaults": {
