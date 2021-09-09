@@ -7,6 +7,6 @@ service : {
         index: nat;
     }) -> (record { content: blob }) query;
 
-    "create_chunk": (record { key: Key; content: blob }) -> (record { chunk_id: ChunkId });
+    "create_chunk": (record { key: Key; index: nat; content: blob }) -> (record { chunk_id: ChunkId });
 }
 

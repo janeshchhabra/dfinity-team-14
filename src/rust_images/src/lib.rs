@@ -20,6 +20,7 @@ struct State {
 #[derive(Clone, Debug, CandidType, Deserialize)]
 struct CreateChunkArg {
     key: Key,
+    index: ChunkId,
     content: ByteBuf,
 }
 
@@ -61,8 +62,7 @@ fn create_chunk(arg: CreateChunkArg) -> CreateChunkResponse {
             asset_under_construction.insert(arg.key.clone(), HashMap::new());
         }
         let key = asset_under_construction.get_mut(&arg.key).unwrap_or_else(|| trap("Couldn't create chunk"));
-        let length = Nat::from(key.len());
-        key.insert( length.clone(), RcBytes::from(arg.content));
-        CreateChunkResponse { chunk_id: length }
+        key.insert( arg.index.clone(), RcBytes::from(arg.content));
+        CreateChunkResponse { chunk_id: arg.index.clone() }
     })
 }
